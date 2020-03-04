@@ -7,6 +7,6 @@ class Pusher:
 
     def post_message(self, title, desp):
         body = {'text': title, 'desp': desp}
-        print(title)
-        print(desp)
+        print(f"Sending Report:{title}...")
         response = post(self.api, data=body)
+        print(f"Request Status: {response.status_code}")
