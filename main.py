@@ -1,8 +1,9 @@
 from Pusher import Pusher
 from ReportGetter import ReportGetter
 from datetime import datetime
+import os
 
-API_KEY = "${API_KEY}"
+API_KEY = os.environ['API_KEY']
 
 def job(currency):
     time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
