@@ -4,15 +4,12 @@ via [Server Chan](http://sc.ftqq.com/3.version)
 
 The report is in MD format.
 
-# Sample Response
+# Sample Response (In Markdown Format)
 
-# Current CAD Selling Price Report
-
-## Data as of 2020-03-04 15:56:38
-
-|工商银行|中国银行|农业银行|交通银行|建设银行|招商银行|光大银行|浦发银行|兴业银行|中信银行|
-|---    |---    |---    |---     | ---   | ---   |---    | ---   | ---   | ---   |
-|519.1000|518.6200|519.4700|520.2800|519.1700|519.1500|519.2963|518.8000|521.4700|519.5000|
+|Currency|工商银行|中国银行|农业银行|交通银行|建设银行|招商银行|光大银行|浦发银行|兴业银行|中信银行|
+|---     |---    |---    |---    |---     | ---   | ---   |---    | ---   | ---   | ---   |
+|CAD     |519.1000|518.6200|519.4700|520.2800|519.1700|519.1500|519.2963|518.8000|521.4700|519.5000|
+`Data as of 2020-03-04 15:56:38`
 
 # Configs
 
@@ -20,7 +17,7 @@ The report is in MD format.
 
 `API_KEY`: Your Server Chan API Key to push the message 
 
-`job(currency)`: Specify which Currency you want to compare with CNY, available choices are:
+`job(currencies)`: Specify a list of which Currency you want to compare with CNY, available choices are:
 * AUD
 * BRL
 * CAD

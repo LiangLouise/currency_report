@@ -5,12 +5,19 @@ import os
 
 API_KEY = os.environ['API_KEY']
 
-def job(currency):
-    time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+def job(currencies):
     p = Pusher(API_KEY)
     getter = ReportGetter()
-    p.post_message(f"Current CNY/{currency} rate at {time}", getter.build_sales_report(currency))
+
+    p.post_message(f"Current CNY To Forex Rate Report", getter.build_sales_report_en(currencies))
 
 
-if __name__=='__main__':
-    job("CAD")
+def test(currencies):
+    getter = ReportGetter()
+    print(getter.build_sales_report_en(currencies))
+    print(getter.build_sales_report_cn(currencies))
+
+
+if __name__ == '__main__':
+    job(["CAD", "USD", "JPY"])
