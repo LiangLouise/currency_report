@@ -93,7 +93,7 @@ class ReportGetter:
         prices.append(curr_price)
         plt.plot(dates, prices, 'b--', label='USD')
         plt.plot(dates, prices, 'b^-')
-        plt.title('Bitcoin/USD')
+        plt.title('USD/Bitcoin')
         plt.xlabel('date')
         plt.ylabel('USD')
         for (x, y) in zip(dates, prices):
