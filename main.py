@@ -9,7 +9,7 @@ def job(currencies):
     p = Pusher(API_KEY)
     getter = ReportGetter('US/Eastern')
 
-    p.post_message(f"Current CNY To Forex Rate and Bitcoin Report", getter.build_report(currencies))
+    p.post_message(f"Current CNY To Forex Rate and Bitcoin Report", getter.build_sales_report_cn(currencies))
 
 
 if __name__ == '__main__':

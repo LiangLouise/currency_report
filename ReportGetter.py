@@ -35,7 +35,7 @@ def add_time(time_zone):
 
 
 def get_pre_date(time_zone, days_to_minus):
-    now = datetime.now(time_zone)
+    now = datetime.now(time_zone).astimezone(pytz.utc)
     return (now - timedelta(days=days_to_minus)).strftime('%Y-%m-%d')
 
 
@@ -45,11 +45,11 @@ class ReportGetter:
         self.default_time_zone = pytz.timezone(default_time_zone)
         self.cur_data = json.loads(get(cur_target_url).content)['result']['data']['bank']
 
-        self.bitcoin_his_data = json.loads(get(bitcoin_historical_url, params={
-            "start": get_pre_date(self.default_time_zone, 7),
-            "end": get_pre_date(self.default_time_zone, 0)
-        }).content)['bpi']
-        self.bitcoin_cur_data = json.loads(get(bitcoin_curr_url).content)['bpi']
+        # self.bitcoin_his_data = json.loads(get(bitcoin_historical_url, params={
+        #     "start": get_pre_date(self.default_time_zone, 7),
+        #     "end": get_pre_date(self.default_time_zone, 0)
+        # }).content)['bpi']
+        # self.bitcoin_cur_data = json.loads(get(bitcoin_curr_url).content)['bpi']
 
     def build_sales_report_en(self, types):
         report = "|Curr|工商银行|中国银行|农业银行|交通银行|建设银行|招商银行|光大银行|浦发银行|兴业银行|中信银行|\n"
@@ -113,3 +113,7 @@ class ReportGetter:
         curr_time = add_time(pytz.timezone('US/Eastern'))
 
         return curr_part + "\n" + bitcoin_part + "\n" + curr_time
+
+if __name__ == "__main__":
+    getter = ReportGetter('US/Eastern')
+    print(getter.build_sales_report_cn(["CAD", "USD", "JPY"]))
